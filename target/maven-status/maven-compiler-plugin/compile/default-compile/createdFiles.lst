@@ -1,0 +1,13 @@
+br\com\watering\can\util\JsonConverterUtil.class
+br\com\watering\can\service\ConfigService.class
+br\com\watering\can\service\GenericService.class
+br\com\watering\can\webservice\ConfigWebService.class
+br\com\watering\can\repository\ConfigRepository.class
+br\com\watering\can\service\ReportService.class
+br\com\watering\can\model\Configuration.class
+br\com\watering\can\service\IGenericService.class
+br\com\watering\can\model\Report.class
+br\com\watering\can\ServerStart.class
+br\com\watering\can\webservice\ESPNodeWebService.class
+br\com\watering\can\repository\ReportRepository.class
+br\com\watering\can\webservice\ReportWebService.class
