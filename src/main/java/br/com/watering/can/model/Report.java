@@ -1,9 +1,12 @@
 package br.com.watering.can.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Calendar;
 
 @Entity(name = "REPORT")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Report {
 
     @Id
@@ -18,6 +21,10 @@ public class Report {
 
     @Column(name = "TEMPERATURE")
     private Double temperature;
+
+    public Report() {
+        dateRelease = Calendar.getInstance();
+    }
 
     public Long getId() {
         return id;
