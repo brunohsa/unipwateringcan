@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -17,9 +18,13 @@ public class ReportWebService {
     @Autowired
     private ReportService reportService;
 
-    @RequestMapping(value = "/insert", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-    public ResponseEntity insert(@RequestBody Report reportRequest) {
-        Report report = reportService.save(reportRequest);
+    @RequestMapping(value = "/{humidity}/{temperature}/insert", method = RequestMethod.GET)
+    public ResponseEntity insert(@PathVariable("humidity") Double humidity, @PathVariable("temperature") Double temperature) {
+        Report report = new Report(humidity, temperature);
+        if (report == null) {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+        reportService.save(report);
         return new ResponseEntity(report, HttpStatus.OK);
     }
 
@@ -35,7 +40,7 @@ public class ReportWebService {
     }
 
     @RequestMapping(value = "/findall", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
-    public ResponseEntity findSAll() {
+    public ResponseEntity findAll() {
         List<Report> reports = reportService.findAll();
         return new ResponseEntity(reports, HttpStatus.OK);
     }

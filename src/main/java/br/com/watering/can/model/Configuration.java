@@ -10,8 +10,11 @@ public class Configuration {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "TIME_TO_GENERATE_REPORT")
-    private Integer timeToGenerateReport;
+    @Column(name = "DESCRIPTION")
+    private String description;
+
+    @Column(name = "VALUE")
+    private Integer value;
 
     public Long getId() {
         return id;
@@ -21,11 +24,15 @@ public class Configuration {
         this.id = id;
     }
 
-    public Integer getTimeToGenerateReport() {
-        return timeToGenerateReport;
+    public String getDescription() {
+        return description;
     }
 
-    public void setTimeToGenerateReport(Integer timeToGenerateReport) {
-        this.timeToGenerateReport = timeToGenerateReport;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer getValue() {
+        return value;
     }
 }

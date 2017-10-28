@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.Calendar;
+import java.util.Date;
 
 @Entity(name = "REPORT")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -14,7 +15,7 @@ public class Report {
     private Long id;
 
     @Column(name = "DATE")
-    private Calendar dateRelease;
+    private Date dateRelease;
 
     @Column(name = "HUMIDITY")
     private Double humidity;
@@ -23,18 +24,23 @@ public class Report {
     private Double temperature;
 
     public Report() {
-        dateRelease = Calendar.getInstance();
+    }
+
+    public Report(Double humidity, Double temperature) {
+        this.dateRelease = Calendar.getInstance().getTime();
+        this.humidity = humidity;
+        this.temperature = temperature;
     }
 
     public Long getId() {
         return id;
     }
 
-    public Calendar getDateRelease() {
+    public Date getDateRelease() {
         return dateRelease;
     }
 
-    public void setDateRelease(Calendar dateRelease) {
+    public void setDateRelease(Date dateRelease) {
         this.dateRelease = dateRelease;
     }
 
